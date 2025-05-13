@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Primary: Deep blue (#1A237E) */
+    --primary: 236 65% 30%; /* HSL for #1A237E */
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary: Light gray (#F5F5F5) */
+    --secondary: 240 8% 96%; /* HSL for #F5F5F5 */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Accent: Teal (#00ACC1) */
+    --accent: 187 100% 38%; /* HSL for #00ACC1 */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 236 65% 30%; /* Use primary color for ring */
+
+    --radius: 0.5rem;
+
+    /* Chart colors */
+    --chart-1: 236 65% 30%; /* Primary */
+    --chart-2: 187 100% 38%; /* Accent */
+    --chart-3: 220 50% 60%;
+    --chart-4: 200 70% 50%;
+    --chart-5: 170 80% 40%;
+
+    /* Sidebar colors (can be same as main theme or distinct) */
+    --sidebar-background: 240 8% 96%; /* Secondary */
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 236 65% 30%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 187 100% 38%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 236 65% 30%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary: Deep blue (#1A237E) */
+    --primary: 236 65% 50%; /* Adjusted for dark mode, slightly lighter */
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary: Darker gray (e.g., #212121 or similar) */
+    --secondary: 0 0% 13%; /* HSL for #212121 */
+    --secondary-foreground: 210 40% 98%;
+
+    /* Accent: Teal (#00ACC1) - can remain same or slightly adjusted */
+    --accent: 187 100% 45%; /* Adjusted for dark mode, slightly brighter */
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 236 65% 50%; /* Use primary color for ring (adjusted) */
+
+    /* Chart colors for dark mode */
+    --chart-1: 236 65% 50%; /* Primary Dark */
+    --chart-2: 187 100% 45%; /* Accent Dark */
+    --chart-3: 220 60% 70%;
+    --chart-4: 200 80% 60%;
+    --chart-5: 170 90% 50%;
+
+    /* Sidebar colors for dark mode */
+    --sidebar-background: 0 0% 13%; /* Secondary Dark */
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 236 65% 50%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 187 100% 45%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 236 65% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Animated Gradient for Heading in ModeSelectionCard */
+@keyframes gradient-xy {
+  0%,
+  100% {
+    background-size: 400% 400%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 400% 400%;
+    background-position: right center;
+  }
+}
+
+.animate-gradient-xy {
+  animation: gradient-xy 8s ease infinite;
+}
+
+/* Glow effects for dark mode */
+.dark .glow-shadow {
+  box-shadow: 0 0 10px -3px hsla(var(--primary) / 0.45),
+    0 0 18px -6px hsla(var(--primary) / 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.dark .card-glow {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.dark .card-glow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px -2px hsla(var(--primary) / 0.6),
+    0 0 30px -6px hsla(var(--accent) / 0.5),
+    0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific glow for buttons */
+.dark .button-glow {
+  /* Apply to buttons that need a default glow */
+  box-shadow: 0 0 8px -4px hsla(var(--accent) / 0.5);
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+.dark .button-glow:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 14px -2px hsla(var(--accent) / 0.75),
+    0 0 22px -4px hsla(var(--accent) / 0.55);
+}
+
+/* ModeSelectionCard Buttons - General Interactive Styling */
+.mode-button-base {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mode-button-base:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Light Theme Hover for Mode Buttons */
+:not(.dark) .mode-button-ats.mode-button-base:hover {
+  box-shadow: 0 5px 15px -3px hsla(var(--primary) / 0.2), 0 4px 6px -4px hsla(var(--primary) / 0.15);
+}
+:not(.dark) .mode-button-matcher.mode-button-base:hover {
+  box-shadow: 0 5px 15px -3px hsla(var(--accent) / 0.2), 0 4px 6px -4px hsla(var(--accent) / 0.15);
+}
+
+
+/* Dark Theme Hover for Mode Buttons */
+.dark .mode-button-ats.mode-button-base:hover {
+  box-shadow: 0 0 20px -2px hsla(var(--primary) / 0.65), 0 0 30px -8px hsla(var(--primary) / 0.45), 0 4px 10px rgba(0,0,0,0.25);
+}
+.dark .mode-button-matcher.mode-button-base:hover {
+  box-shadow: 0 0 20px -2px hsla(var(--accent) / 0.65), 0 0 30px -8px hsla(var(--accent) / 0.45), 0 4px 10px rgba(0,0,0,0.25);
+}
+
+
+/* Bounce animation for loader - kept if FunnyLoader is not used or as fallback */
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-15%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* Animated Typing Text */
+.animated-typing-text {
+  display: inline-block;
+  position: relative;
+  font-family: var(--font-geist-sans);
+
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0; /* Start with no width, animated by typing-reveal */
+  border-right: .1em solid transparent; /* Caret, controlled by cursor-control */
+
+  /* Use CSS variable for steps, fallback to 40 if not set */
+  /* --typing-steps should be set by JS to the current text's length */
+  animation:
+    typing-reveal 10s steps(var(--typing-steps, 40), end) 0.5s infinite,
+    cursor-control 10s step-end 0.5s infinite;
+
+  /* Added for gradient text if not handled by other classes */
+  background-size: 400% 400%; /* For animate-gradient-xy if applied directly */
+}
+
+/* Keyframes for typing and erasing effect (width animation) */
+@keyframes typing-reveal {
+  0% { width: 0; }      /* Start: text erased or initial empty state */
+  35% { width: 100%; }  /* Typing complete, text fully visible */
+  45% { width: 100%; }  /* Pause: Text remains fully visible */
+  80% { width: 0%; }     /* Erasing complete, text fully erased */
+  100% { width: 0%; }    /* Pause: Text remains erased, ready for next cycle */
+}
+
+/* Keyframes for cursor control (blinking and solid states) */
+@keyframes cursor-control {
+  /* Typing phase: 0% to 35% (0s to 3.5s of animation cycle). Cursor solid. */
+  0%, 35% {
+    border-right-color: hsl(var(--accent));
+  }
+
+  /* Pause 1 (full text): 35% to 45% (3.5s to 4.5s - 1s duration). Cursor blinks. */
+  37.5% { border-right-color: transparent; }
+  40.0% { border-right-color: hsl(var(--accent)); }
+  42.5% { border-right-color: transparent; }
+  45.0% { border-right-color: hsl(var(--accent)); } /* End of pause 1, start of erase */
+
+  /* Erasing phase: 45% to 80% (4.5s to 8.0s - 3.5s duration). Cursor solid. */
+  45.01%, 80% { /* Use 45.01% to ensure it picks up immediately after the blink state */
+    border-right-color: hsl(var(--accent));
+  }
+
+  /* Pause 2 (no text): 80% to 100% (8.0s to 10.0s - 2s duration). Cursor blinks. */
+  83.33% { border-right-color: transparent; }
+  86.66% { border-right-color: hsl(var(--accent)); }
+  89.99% { border-right-color: transparent; }
+  93.32% { border-right-color: hsl(var(--accent)); }
+  96.65% { border-right-color: transparent; }
+  100%   { border-right-color: hsl(var(--accent)); } /* End of cycle, ready to restart */
+}
+
+
+/* Text Glow Effect */
+.text-glow {
+  text-shadow:
+    0 0 4px hsla(var(--foreground), 0.2), /* Subtle general glow based on foreground */
+    0 0 8px hsla(var(--primary)/0.4),
+    0 0 12px hsla(var(--accent)/0.4);
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.text-glow:hover {
+  text-shadow:
+    0 0 6px hsla(var(--foreground), 0.3),
+    0 0 10px hsla(var(--primary)/0.6),
+    0 0 15px hsla(var(--primary)/0.3),
+    0 0 16px hsla(var(--accent)/0.6),
+    0 0 22px hsla(var(--accent)/0.3);
+}
+
+/* Dark Mode Specific Text Glow Enhancement */
+.dark .text-glow {
+  text-shadow:
+    0 0 5px hsla(var(--primary)/0.7),    /* Brighter primary glow */
+    0 0 10px hsla(var(--primary)/0.5),
+    0 0 15px hsla(var(--accent)/0.7),    /* Brighter accent glow */
+    0 0 20px hsla(var(--accent)/0.5);
+}
+
+.dark .text-glow:hover {
+  text-shadow:
+    0 0 8px hsla(var(--primary)/0.9),
+    0 0 16px hsla(var(--primary)/0.7),
+    0 0 20px hsla(var(--accent)/0.9),
+    0 0 28px hsla(var(--accent)/0.7);
+}
+
+    
