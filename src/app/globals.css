@@ -260,43 +260,37 @@
   89.99% { border-right-color: transparent; }
   93.32% { border-right-color: hsl(var(--accent)); }
   96.65% { border-right-color: transparent; }
-  100%   { border-right-color: hsl(var(--accent)); } /* End of cycle, ready to restart */
+  100%   { border-right-color: hsl(var(--accent)); } 
 }
 
 
-/* Text Glow Effect */
+
 .text-glow {
   text-shadow:
-    0 0 4px hsla(var(--foreground), 0.2), /* Subtle general glow based on foreground */
+    0 0 4px hsla(var(--foreground),0.2)
     0 0 8px hsla(var(--primary)/0.4),
-    0 0 12px hsla(var(--accent)/0.4);
+    0 0 4px hsla(var(--accent)/0.4);
   transition: text-shadow 0.3s ease-in-out;
 }
 
 .text-glow:hover {
   text-shadow:
-    0 0 6px hsla(var(--foreground), 0.3),
-    0 0 10px hsla(var(--primary)/0.6),
-    0 0 15px hsla(var(--primary)/0.3),
-    0 0 16px hsla(var(--accent)/0.6),
-    0 0 22px hsla(var(--accent)/0.3);
+    0 0 15px hsla(var(--foreground),0.3),
+    0 0 5px hsla(var(--primary)/0.6),
+    0 0 5px hsla(var(--primary)/0.3),
+    0 0 6px hsla(var(--accent)/0.6),
+    0 0 5px hsla(var(--accent)/0.3);
 }
 
-/* Dark Mode Specific Text Glow Enhancement */
+
 .dark .text-glow {
   text-shadow:
-    0 0 5px hsla(var(--primary)/0.7),    /* Brighter primary glow */
+    0 0 14px hsla(var(--primary)/0.7),    
     0 0 10px hsla(var(--primary)/0.5),
-    0 0 15px hsla(var(--accent)/0.7),    /* Brighter accent glow */
-    0 0 20px hsla(var(--accent)/0.5);
+   
+    0 0 8px hsla(var(--accent)/0.5);
 }
 
-.dark .text-glow:hover {
-  text-shadow:
-    0 0 8px hsla(var(--primary)/0.9),
-    0 0 16px hsla(var(--primary)/0.7),
-    0 0 20px hsla(var(--accent)/0.9),
-    0 0 28px hsla(var(--accent)/0.7);
-}
+
 
     
