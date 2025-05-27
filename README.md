@@ -37,7 +37,6 @@ Helps users enhance their resumes to match specific job descriptions and improve
 
 ## 📷 Screenshots
 
-> Add actual screenshots in the `public/screenshots/` folder and update these links.
 
 ### 🔹 Home Page
 ![Home Page](./public/screenshots/Home.png)
